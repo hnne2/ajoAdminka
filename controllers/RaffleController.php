@@ -29,8 +29,13 @@ class RaffleController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Winner::find(),
+            'sort' => [
+                'defaultOrder' => [
+                    'created_at' => SORT_DESC, // новые сверху
+                ],
+            ],
         ]);
-
+    
         return $this->render('index', [
             'dataProvider' => $dataProvider,
         ]);

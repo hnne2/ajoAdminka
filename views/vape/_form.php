@@ -71,7 +71,6 @@ $this->registerJs("
         'Напитки' => 'Напитки',
         'Фрукты' => 'Фрукты',
         'Миксы' => 'Миксы',
-        'Травы' => 'Травы',
     ], ['prompt' => 'Выберите категорию']) ?>
 
     <?= $form->field($model, 'flavor_list')->textInput(['maxlength' => true]) ?>
@@ -80,29 +79,32 @@ $this->registerJs("
         'template' => "{label}\n<div class=\"range-wrapper\">{input}</div>\n{error}",
     ])->input('range', [
         'min' => 0,
-        'max' => 2,
-        'step' => 0.5,
+        'max' => 5,
+        'step' => 0.1,
     ]) ?>
 
     <?= $form->field($model, 'ice_level', [
         'template' => "{label}\n<div class=\"range-wrapper\">{input}</div>\n{error}",
     ])->input('range', [
         'min' => 0,
-        'max' => 2,
-        'step' => 0.5,
+        'max' => 5,
+        'step' => 0.1,
     ]) ?>
 
     <?= $form->field($model, 'sourness', [
         'template' => "{label}\n<div class=\"range-wrapper\">{input}</div>\n{error}",
     ])->input('range', [
         'min' => 0,
-        'max' => 2,
-        'step' => 0.5,
+        'max' => 5,
+        'step' => 0.1,
     ]) ?>
 
     <?= $form->field($model, 'imageFile')->fileInput() ?>
 
     <?= $form->field($model, 'is_top15')->checkbox(['label' => 'Отображать в топ-15']) ?>
+    
+    <?= $form->field($model, 'isActive')->checkbox(['label' => 'Активен']) ?>
+
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

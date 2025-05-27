@@ -33,7 +33,7 @@ use mihaildev\ckeditor\CKEditor;
 <?php endif; ?>
 
     <?= $form->field($model, 'pickup_location')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'max_prizes')->input('number', ['min' => 1]) ?>
+    <?= $form->field($model, 'max_prizes')->input('number', ['min' => 0]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

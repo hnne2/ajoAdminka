@@ -15,6 +15,7 @@ use Yii;
  * @property float $sourness
  * @property string|null $image_path
  * @property int $is_top15
+ * @property int $isActive
  */
 class Vape extends \yii\db\ActiveRecord
 {
@@ -41,7 +42,7 @@ class Vape extends \yii\db\ActiveRecord
             [['sweetness', 'ice_level', 'sourness'], 'number'],
             [['sort', 'flavor_list', 'image_path'], 'string', 'max' => 255],
             [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg'],
-            [['is_top15'], 'boolean'],
+            [['is_top15', 'isActive'], 'boolean'],
         ];
     }
 
@@ -59,6 +60,7 @@ class Vape extends \yii\db\ActiveRecord
             'sourness' => 'Кислинка',
             'image_path' => 'Изображение',
             'is_top15' => 'Топ 15',
+            'isActive' => 'Активен',
         ];
     }
 
@@ -67,24 +69,24 @@ class Vape extends \yii\db\ActiveRecord
      *
      * @return bool
      */
-public function upload()
-{
-    if ($this->validate()) {
-        $uploadDir = '/home/zland/java/uploads/'; // абсолютный путь
+    public function upload()
+    {
+        if ($this->validate()) {
+            $uploadDir = '/home/zland/java/uploads/'; // абсолютный путь
 
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            $fileName = uniqid() . '.' . $this->imageFile->extension;
+            $fullPath = $uploadDir . $fileName;
+
+            if ($this->imageFile->saveAs($fullPath)) {
+                $this->image_path = $fileName; // сохраняем только имя файла в БД
+                return true;
+            }
         }
 
-        $fileName = uniqid() . '.' . $this->imageFile->extension;
-        $fullPath = $uploadDir . $fileName;
-
-        if ($this->imageFile->saveAs($fullPath)) {
-            $this->image_path = $fileName; // сохраняем только имя файла в БД
-            return true;
-        }
+        return false;
     }
-
-    return false;
-}
 }

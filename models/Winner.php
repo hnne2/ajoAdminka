@@ -22,7 +22,7 @@ class Winner extends ActiveRecord
     {
         return [
 	 [['phone'], 'string', 'max' => 20],
-            [['phone', 'telegram_nick', 'date', 'time', 'prize'], 'required'],
+            [['telegram_nick', 'date', 'time', 'prize'], 'required'],
             [['telegram_nick', 'prize'], 'string', 'max' => 255],
             [['date'], 'date', 'format' => 'php:Y-m-d'],
             [['time'], 'date', 'format' => 'php:H:i'],

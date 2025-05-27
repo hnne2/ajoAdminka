@@ -14,15 +14,21 @@ use yii\web\NotFoundHttpException;
 class PartnerController extends Controller
 {
     public function actionIndex()
-    {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Partner::find(),
-        ]);
+{
+    $dataProvider = new ActiveDataProvider([
+        'query' => Partner::find(),
+        'sort' => [
+            'defaultOrder' => [
+                'created_at' => SORT_DESC,  // сортировка по created_at по убыванию (новые сверху)
+            ],
+        ],
+    ]);
 
-        return $this->render('index', [
-            'dataProvider' => $dataProvider,
-        ]);
-    }
+    return $this->render('index', [
+        'dataProvider' => $dataProvider,
+    ]);
+}
+
 
     public function actionView($id)
     {
@@ -36,8 +42,8 @@ class PartnerController extends Controller
         $model = new Partner();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->created_at = time();
-            $model->updated_at = time();
+            $model->created_at = (int)(microtime(true) * 1000);
+            $model->updated_at = (int)(microtime(true) * 1000);
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -53,7 +59,7 @@ class PartnerController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->updated_at = time();
+            $model->updated_at = (int)(microtime(true) * 1000);
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }

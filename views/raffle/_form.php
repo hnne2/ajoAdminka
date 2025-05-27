@@ -6,7 +6,7 @@ use yii\widgets\ActiveForm;
     'action' => $model->isNewRecord ? ['raffle/create'] : ['raffle/update', 'id' => $model->id],
 ]); ?>
 
-   <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+ 
     <?= $form->field($model, 'telegram_nick')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'date')->input('date') ?>
     <?= $form->field($model, 'time')->input('time') ?>
@@ -17,4 +17,4 @@ use yii\widgets\ActiveForm;
     </div>
 
     <?php ActiveForm::end(); ?>
-</div>
+</div>  

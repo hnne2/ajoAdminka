@@ -10,11 +10,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            [
+                'attribute' => 'id',
+                'label' => 'ID',
+            ],
             'telegram_nick',
             'date',
             'time',
-            'prize',
+            [
+                'attribute' => 'prize',
+                'label' => 'Приз',
+                'value' => function ($model) {
+                    return strip_tags($model->prize);
+                },
+            ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',

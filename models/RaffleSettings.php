@@ -30,7 +30,7 @@ class RaffleSettings extends ActiveRecord
         return [
             [['probability', 'prize', 'pickup_location', 'max_prizes'], 'required'],
             [['probability'], 'number', 'min' => 0, 'max' => 1],
-            [['max_prizes'], 'integer', 'min' => 1],
+            [['max_prizes'], 'integer', 'min' => 0],
             [['prize', 'pickup_location'], 'string', 'max' => 255],
             [['created_at', 'updated_at'], 'integer'],
             // правило для загружаемого файла

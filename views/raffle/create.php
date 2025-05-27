@@ -6,7 +6,6 @@ $this->params['breadcrumbs'][] = ['label' => 'Список победителе�
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="raffle-create">
-    <h1><?= Html::encode($this->title) ?></h1>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

@@ -34,7 +34,7 @@ class Partner extends \yii\db\ActiveRecord
         return [
             [['name', 'phone'], 'required'],
             [['message'], 'string'],
-            [['created_at', 'updated_at'], 'integer'],
+            [['created_at', 'updated_at'], 'number', 'integerOnly' => true],
             [['name', 'email'], 'string', 'max' => 255],
             [['phone'], 'string', 'max' => 20],
             [['telegram_nick'], 'string', 'max' => 100],
