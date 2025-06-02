@@ -7,7 +7,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'defaultRoute' => '/vape/index',
+    'defaultRoute' => '/check/index',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -15,7 +15,7 @@ $config = [
     'components' => [
         'request' => [
             'cookieValidationKey' => '6305877fa923142c5dda8a909df225d6f44d88f56eec674d78ad90a430de234e',
- 	'baseUrl' => '/adminPanel',
+ 	'baseUrl' => '',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -50,7 +50,7 @@ $config = [
 ],
  'assetManager' => [
         'basePath' => '@webroot/assets',
-	'baseUrl' => '/adminPanel/assets',
+	'baseUrl' => '/assets',
     ],
     ],
 	'as beforeRequest' => [

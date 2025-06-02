@@ -112,108 +112,127 @@ $this->beginPage();
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item <?= Yii::$app->controller->id === 'vape' ? 'menu-open' : '' ?>">
-                            <a href="#" class="nav-link <?= Yii::$app->controller->id === 'vape' ? 'active' : '' ?>">
-                                <i class="nav-icon fas fa-smoking"></i>
+
+                        <!-- Checks -->
+                        <li class="nav-item <?= Yii::$app->controller->id === 'check' ? 'menu-open' : '' ?>">
+                            <a href="#" class="nav-link <?= Yii::$app->controller->id === 'check' ? 'active' : '' ?>">
+                                <i class="nav-icon fas fa-clipboard-check"></i>
                                 <p>
-                                    Вейпы
+                                    Чеки
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?= Yii::$app->urlManager->createUrl(['/vape/index']) ?>" class="nav-link <?= Yii::$app->controller->id === 'vape' && Yii::$app->controller->action->id === 'index' ? 'active' : '' ?>">
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/check/index']) ?>" class="nav-link <?= Yii::$app->controller->id === 'check' && Yii::$app->controller->action->id === 'index' ? 'active' : '' ?>">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Список вейпов</p>
+                                        <p>Список чеков</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= Yii::$app->urlManager->createUrl(['/category/index']) ?>" class="nav-link <?= Yii::$app->controller->id === 'category' && Yii::$app->controller->action->id === 'index' ? 'active' : '' ?>">
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/check/create']) ?>" class="nav-link <?= Yii::$app->controller->id === 'check' && Yii::$app->controller->action->id === 'create' ? 'active' : '' ?>">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Список категорий</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="<?= Yii::$app->urlManager->createUrl(['/vape/create']) ?>" class="nav-link <?= Yii::$app->controller->id === 'vape' && Yii::$app->controller->action->id === 'create' ? 'active' : '' ?>">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Добавить вейп</p>
+                                        <p>Добавить чек</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item <?= Yii::$app->controller->id === 'raffle' ? 'menu-open' : '' ?>">
-                            <a href="#" class="nav-link <?= Yii::$app->controller->id === 'raffle' ? 'active' : '' ?>">
+
+                        <!-- Draws -->
+                        <li class="nav-item <?= Yii::$app->controller->id === 'draw' ? 'menu-open' : '' ?>">
+                            <a href="#" class="nav-link <?= Yii::$app->controller->id === 'draw' ? 'active' : '' ?>">
+                                <i class="nav-icon fas fa-dice"></i>
+                                <p>
+                                    Розыгрыши
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/draw/index']) ?>" class="nav-link <?= Yii::$app->controller->id === 'draw' && Yii::$app->controller->action->id === 'index' ? 'active' : '' ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Список розыгрышей</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/draw/create']) ?>" class="nav-link <?= Yii::$app->controller->id === 'draw' && Yii::$app->controller->action->id === 'create' ? 'active' : '' ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Добавить розыгрыш</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Prizes -->
+                        <li class="nav-item <?= Yii::$app->controller->id === 'prize' ? 'menu-open' : '' ?>">
+                            <a href="#" class="nav-link <?= Yii::$app->controller->id === 'prize' ? 'active' : '' ?>">
+                                <i class="nav-icon fas fa-gift"></i>
+                                <p>
+                                    Призы
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/prize/index']) ?>" class="nav-link <?= Yii::$app->controller->id === 'prize' && Yii::$app->controller->action->id === 'index' ? 'active' : '' ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Список призов</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/prize/create']) ?>" class="nav-link <?= Yii::$app->controller->id === 'prize' && Yii::$app->controller->action->id === 'create' ? 'active' : '' ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Добавить приз</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Scratch Cards -->
+                        <li class="nav-item <?= Yii::$app->controller->id === 'scratch-card' ? 'menu-open' : '' ?>">
+                            <a href="#" class="nav-link <?= Yii::$app->controller->id === 'scratch-card' ? 'active' : '' ?>">
                                 <i class="nav-icon fas fa-ticket-alt"></i>
                                 <p>
-                                    Розыгрыш
+                                    Скретч-карты
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?= Yii::$app->urlManager->createUrl(['/raffle/index']) ?>" class="nav-link <?= Yii::$app->controller->id === 'raffle' && Yii::$app->controller->action->id === 'index' ? 'active' : '' ?>">
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/scratch-card/index']) ?>" class="nav-link <?= Yii::$app->controller->id === 'scratch-card' && Yii::$app->controller->action->id === 'index' ? 'active' : '' ?>">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Список победителей</p>
+                                        <p>Список скретч-карт</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= Yii::$app->urlManager->createUrl(['/raffle/create']) ?>" class="nav-link <?= Yii::$app->controller->id === 'raffle' && Yii::$app->controller->action->id === 'create' ? 'active' : '' ?>">
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/scratch-card/create']) ?>" class="nav-link <?= Yii::$app->controller->id === 'scratch-card' && Yii::$app->controller->action->id === 'create' ? 'active' : '' ?>">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Добавить победителя</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="<?= Yii::$app->urlManager->createUrl(['/raffle/settings']) ?>" class="nav-link <?= Yii::$app->controller->id === 'raffle' && Yii::$app->controller->action->id === 'settings' ? 'active' : '' ?>">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Настройки</p>
+                                        <p>Добавить скретч-карту</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
 
-                        <li class="nav-item <?= Yii::$app->controller->id === 'partner' ? 'menu-open' : '' ?>">
-                            <a href="#" class="nav-link <?= Yii::$app->controller->id === 'partner' ? 'active' : '' ?>">
-                                <i class="nav-icon fas fa-handshake"></i>
+                        <!-- Users -->
+                        <li class="nav-item <?= Yii::$app->controller->id === 'users' ? 'menu-open' : '' ?>">
+                            <a href="#" class="nav-link <?= Yii::$app->controller->id === 'users' ? 'active' : '' ?>">
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
-                                    Партнёры
+                                    Пользователи
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?= Yii::$app->urlManager->createUrl(['/partner/index']) ?>" class="nav-link <?= Yii::$app->controller->id === 'partner' && Yii::$app->controller->action->id === 'index' ? 'active' : '' ?>">
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/users/index']) ?>" class="nav-link <?= Yii::$app->controller->id === 'user' && Yii::$app->controller->action->id === 'index' ? 'active' : '' ?>">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Список партнёров</p>
+                                        <p>Список пользователей</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= Yii::$app->urlManager->createUrl(['/partner/create']) ?>" class="nav-link <?= Yii::$app->controller->id === 'partner' && Yii::$app->controller->action->id === 'create' ? 'active' : '' ?>">
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/users/create']) ?>" class="nav-link <?= Yii::$app->controller->id === 'user' && Yii::$app->controller->action->id === 'create' ? 'active' : '' ?>">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Добавить партнёра</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item <?= Yii::$app->controller->id === 'pickup-location' ? 'menu-open' : '' ?>">
-                            <a href="#" class="nav-link <?= Yii::$app->controller->id === 'pickup-location' ? 'active' : '' ?>">
-                                <i class="nav-icon fas fa-map-marker-alt"></i>
-                                <p>
-                                    Пункты выдачи
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="<?= Yii::$app->urlManager->createUrl(['/pickup-location/index']) ?>" class="nav-link <?= Yii::$app->controller->id === 'pickup-location' && Yii::$app->controller->action->id === 'index' ? 'active' : '' ?>">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Список пунктов</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="<?= Yii::$app->urlManager->createUrl(['/pickup-location/create']) ?>" class="nav-link <?= Yii::$app->controller->id === 'pickup-location' && Yii::$app->controller->action->id === 'create' ? 'active' : '' ?>">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Добавить пункт</p>
+                                        <p>Добавить пользователя</p>
                                     </a>
                                 </li>
                             </ul>
@@ -221,6 +240,7 @@ $this->beginPage();
 
                     </ul>
                 </nav>
+
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->

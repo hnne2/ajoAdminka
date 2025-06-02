@@ -2,8 +2,13 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=127.0.0.1;dbname=zland',
-    'username' => 'zland',
-    'password' => 'ombonSULmireVIvINIgenta',
+    'dsn' => 'mysql:host=localhost;dbname=landing_db',
+    'username' => 'landing_user',
+    'password' => 'your_password',
     'charset' => 'utf8mb4',
+
+    // Включи эмуляцию подготовленных запросов, если надо:
+    'attributes' => [
+        PDO::ATTR_EMULATE_PREPARES => true,
+    ],
 ];

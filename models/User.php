@@ -28,11 +28,6 @@ class User extends ActiveRecord implements IdentityInterface
         return static::findOne(['username' => $username]);
     }
 
-    public function validatePassword($password)
-    {
-        return Yii::$app->security->validatePassword($password, $this->password_hash);
-    }
-
     public function getId()
     {
         return $this->id;
@@ -46,5 +41,11 @@ class User extends ActiveRecord implements IdentityInterface
     public function validateAuthKey($authKey)
     {
         return $this->auth_key === $authKey;
+    }
+
+    public function validatePassword($password)
+    {
+        // У тебя пароль хранится в поле `password`, проверяем его как хэш:
+        return Yii::$app->security->validatePassword($password, $this->password);
     }
 }
