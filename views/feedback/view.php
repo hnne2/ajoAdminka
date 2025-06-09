@@ -4,16 +4,15 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var app\models\Prize $model */
+/** @var app\models\Feedback $model */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Prizes', 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Feedbacks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="prize-view">
+<div class="feedback-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -30,12 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'user_id',
-            'check_id',
-            'prize_type',
-            'status',
-            'sent_at',
-            'notes:ntext',
+            'name',
+            'tel',
+            'email:email',
+            'prize',
+            'lottery_id',
+            'created_at',
         ],
     ]) ?>
 

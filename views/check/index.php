@@ -9,23 +9,36 @@ use yii\grid\GridView;
 /** @var yii\web\View $this */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Checks';
+
+$this->title = 'Чеки';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="check-index">
 
-    <p><?= Html::a('Create Check', ['create'], ['class' => 'btn btn-success']) ?></p>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
         'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            [
+                'attribute' => 'status',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    $statuses = \app\models\Check::optsStatus();
+                    $url = Url::to(['check/update-status']);
+                    $options = '';
+                    foreach ($statuses as $key => $label) {
+                        $selected = $model->status == $key ? 'selected' : '';
+                        $options .= "<option value='$key' $selected>$label</option>";
+                    }
+                    return "<select class='status-dropdown' data-id='{$model->id}' data-url='{$url}'>{$options}</select>";
+                },
+                'filter' => \app\models\Check::optsStatus(),
+            ],
             'id',
-            'user_id',
             'inn',
             'title',
-            'weight',
-            [
-                'attribute' => 'image_filename',
+            ['attribute' => 'image_filename',
                 'format' => 'raw',
                 'value' => function ($model) {
                     if (!empty($model->image_filename)) {
@@ -36,26 +49,23 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'filter' => false,
             ],
-            'address',
-            [
-                'attribute' => 'status',
-                'format' => 'raw',
-                'value' => function ($model) {
-                    $statuses = Check::optsStatus();
-                    $url = Url::to(['check/update-status']);
-                    $options = '';
-                    foreach ($statuses as $key => $label) {
-                        $selected = $model->status == $key ? 'selected' : '';
-                        $options .= "<option value='$key' $selected>$label</option>";
-                    }
-                    return "<select class='status-dropdown' data-id='{$model->id}' data-url='{$url}'>{$options}</select>";
-                },
-                'filter' => false,
-            ],
-            'moderation_comment:ntext',
+            'moderation_comment:text',
             'uploaded_at',
             [
-                'class' => ActionColumn::class,
+                'attribute' => 'is_prize_sent',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    return $model->is_prize_sent ? 'Да' : 'Нет';
+                },
+                'filter' => [
+                    '' => 'Все',
+                    1 => 'Да',
+                    0 => 'Нет',
+                ],
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{update} {delete}',
                 'urlCreator' => function ($action, Check $model) {
                     return Url::to([$action, 'id' => $model->id]);
                 }

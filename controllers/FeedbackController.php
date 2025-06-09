@@ -2,16 +2,17 @@
 
 namespace app\controllers;
 
-use app\models\Prize;
+use app\models\Feedback;
+use app\models\FeedbackSearch;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PrizeController implements the CRUD actions for Prize model.
+ * FeedbackController implements the CRUD actions for Feedback model.
  */
-class PrizeController extends Controller
+class FeedbackController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,24 +33,22 @@ class PrizeController extends Controller
     }
 
     /**
-     * Lists all Prize models.
+     * Lists all Feedback models.
      *
      * @return string
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Prize::find(),
-            /*
+            'query' => Feedback::find(),
             'pagination' => [
                 'pageSize' => 50
             ],
             'sort' => [
                 'defaultOrder' => [
-                    'id' => SORT_DESC,
+                    'created_at' => SORT_DESC, // теперь сортировка по времени
                 ]
             ],
-            */
         ]);
 
         return $this->render('index', [
@@ -58,7 +57,7 @@ class PrizeController extends Controller
     }
 
     /**
-     * Displays a single Prize model.
+     * Displays a single Feedback model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -71,17 +70,17 @@ class PrizeController extends Controller
     }
 
     /**
-     * Creates a new Prize model.
+     * Creates a new Feedback model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Prize();
+        $model = new Feedback();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
@@ -93,7 +92,7 @@ class PrizeController extends Controller
     }
 
     /**
-     * Updates an existing Prize model.
+     * Updates an existing Feedback model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -104,7 +103,8 @@ class PrizeController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
+
         }
 
         return $this->render('update', [
@@ -113,7 +113,7 @@ class PrizeController extends Controller
     }
 
     /**
-     * Deletes an existing Prize model.
+     * Deletes an existing Feedback model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -127,15 +127,15 @@ class PrizeController extends Controller
     }
 
     /**
-     * Finds the Prize model based on its primary key value.
+     * Finds the Feedback model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Prize the loaded model
+     * @return Feedback the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Prize::findOne(['id' => $id])) !== null) {
+        if (($model = Feedback::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

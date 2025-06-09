@@ -1,6 +1,7 @@
 <?php
 
 namespace app\controllers;
+use app\models\CheckSearch;
 use Yii;
 use app\models\Check;
 use yii\data\ActiveDataProvider;
@@ -40,21 +41,11 @@ class CheckController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Check::find(),
-            /*
-            'pagination' => [
-                'pageSize' => 50
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_DESC,
-                ]
-            ],
-            */
-        ]);
+        $searchModel = new CheckSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -111,9 +102,8 @@ class CheckController extends Controller
             $model->load($this->request->post());
             $model->imageFile =  UploadedFile::getInstance($model, 'imageFile');
 
-
             if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();

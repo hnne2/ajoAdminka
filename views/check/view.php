@@ -13,8 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="check-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
@@ -30,17 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'user_id',
-            'image_filename',
             'inn',
             'title',
-            'weight',
-            'address',
             'status',
             'moderation_comment:ntext',
             'uploaded_at',
             'processed_at',
             'is_prize_sent',
+            'image_filename',
         ],
     ]) ?>
 

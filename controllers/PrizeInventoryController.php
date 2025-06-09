@@ -1,17 +1,18 @@
 <?php
 
 namespace app\controllers;
-
-use app\models\ScratchCard;
-use yii\data\ActiveDataProvider;
+use Yii;
+use app\models\PrizeInventory;
+use app\models\PrizeInventorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
- * ScratchCardController implements the CRUD actions for ScratchCard model.
+ * PrizeInventoryController implements the CRUD actions for PrizeInventory model.
  */
-class ScratchCardController extends Controller
+class PrizeInventoryController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,34 +33,24 @@ class ScratchCardController extends Controller
     }
 
     /**
-     * Lists all ScratchCard models.
+     * Lists all PrizeInventory models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => ScratchCard::find(),
-            /*
-            'pagination' => [
-                'pageSize' => 50
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_DESC,
-                ]
-            ],
-            */
-        ]);
+        $searchModel = new PrizeInventorySearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single ScratchCard model.
-     * @param int $id ID
+     * Displays a single PrizeInventory model.
+     * @param string $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -71,17 +62,20 @@ class ScratchCardController extends Controller
     }
 
     /**
-     * Creates a new ScratchCard model.
+     * Creates a new PrizeInventory model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new ScratchCard();
+        $model = new PrizeInventory();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            $model->load($this->request->post());
+            $model->imageFile = \yii\web\UploadedFile::getInstance($model, 'imageFile');
+
+            if ($model->upload() && $model->save()) {
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
@@ -93,9 +87,9 @@ class ScratchCardController extends Controller
     }
 
     /**
-     * Updates an existing ScratchCard model.
+     * Updates an existing PrizeInventory model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id ID
+     * @param string $id ID
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -103,8 +97,18 @@ class ScratchCardController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+
+            if ($model->imageFile && !$model->upload()) {
+                // Ошибка загрузки файла, например:
+                Yii::$app->session->setFlash('error', 'Ошибка загрузки файла.');
+                return $this->render('update', ['model' => $model]);
+            }
+
+            if ($model->save(false)) { // false — сохраняем без повторной валидации
+                return $this->redirect(['index']);
+            }
         }
 
         return $this->render('update', [
@@ -112,10 +116,11 @@ class ScratchCardController extends Controller
         ]);
     }
 
+
     /**
-     * Deletes an existing ScratchCard model.
+     * Deletes an existing PrizeInventory model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id ID
+     * @param string $id ID
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -127,15 +132,15 @@ class ScratchCardController extends Controller
     }
 
     /**
-     * Finds the ScratchCard model based on its primary key value.
+     * Finds the PrizeInventory model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id ID
-     * @return ScratchCard the loaded model
+     * @param string $id ID
+     * @return PrizeInventory the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ScratchCard::findOne(['id' => $id])) !== null) {
+        if (($model = PrizeInventory::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
