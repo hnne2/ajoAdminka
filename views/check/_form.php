@@ -11,7 +11,8 @@ use yii\widgets\ActiveForm;
 <div class="check-form">
 
     <?php $form = ActiveForm::begin([
-        'options' => ['enctype' => 'multipart/form-data']
+        'action' => $model->isNewRecord ? ['check/create'] : ['check/update', 'id' => $model->id],
+        'options' => ['enctype' => 'multipart/form-data'],
     ]); ?>
 
 
@@ -19,7 +20,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->dropDownList([ 'scanned_success' => 'Scanned success', 'manual_review' => 'Manual review', 'rejected' => 'Rejected', ], ['prompt' => '']) ?>
+        <?= $form->field($model, 'status')->dropDownList([ 'scanned_success' => 'Успешное сканирование', 'manual_review' => 'Ручная проверка', 'rejected' => 'отклонен', ], ['prompt' => '']) ?>
+
 
     <?= $form->field($model, 'moderation_comment')->textarea(['rows' => 6]) ?>
 

@@ -3,8 +3,8 @@
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;dbname=landing_db',
-    'username' => 'landing_user',
-    'password' => 'your_password',
+    'username' => 'limkorm-check-bot',
+    'password' => 'ombonSULmireVIvINIgenta',
     'charset' => 'utf8mb4',
 
     // Включи эмуляцию подготовленных запросов, если надо:

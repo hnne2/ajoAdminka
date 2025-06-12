@@ -93,9 +93,9 @@ class Check extends \yii\db\ActiveRecord
     public static function optsStatus()
     {
         return [
-            self::STATUS_SCANNED_SUCCESS => 'scanned_success',
-            self::STATUS_MANUAL_REVIEW => 'manual_review',
-            self::STATUS_REJECTED => 'rejected',
+            self::STATUS_SCANNED_SUCCESS => 'Успешное сканирование',
+            self::STATUS_MANUAL_REVIEW => 'Ручная проверка',
+            self::STATUS_REJECTED => 'отклонен',
         ];
     }
 
@@ -122,7 +122,7 @@ class Check extends \yii\db\ActiveRecord
     public function upload()
     {
         if ($this->validate()) {
-            $uploadDir = '/home/gri/uploads/';
+            $uploadDir = '/home/limkorm-check-bot/upload/';
 
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0777, true);

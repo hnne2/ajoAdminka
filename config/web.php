@@ -15,7 +15,7 @@ $config = [
     'components' => [
         'request' => [
             'cookieValidationKey' => '6305877fa923142c5dda8a909df225d6f44d88f56eec674d78ad90a430de234e',
- 	'baseUrl' => '',
+ 	'baseUrl' => '/adminPanel',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -50,7 +50,7 @@ $config = [
 ],
  'assetManager' => [
         'basePath' => '@webroot/assets',
-	'baseUrl' => '/assets',
+	'baseUrl' => '/adminPanel/assets',
     ],
     ],
 	'as beforeRequest' => [

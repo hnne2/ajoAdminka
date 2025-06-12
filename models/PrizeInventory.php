@@ -88,7 +88,7 @@ class PrizeInventory extends \yii\db\ActiveRecord
     public function upload()
     {
         if ($this->validate()) {
-            $uploadDir = '/home/gri/uploads/';
+            $uploadDir = '/home/limkorm-check-bot/upload/';
 
 
             if (!is_dir($uploadDir)) {

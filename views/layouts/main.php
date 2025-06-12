@@ -128,9 +128,9 @@ $this->beginPage();
 
                         <li class="nav-item <?= Yii::$app->controller->id === 'feedback' ? 'menu-open' : '' ?>">
                             <a href="#" class="nav-link <?= Yii::$app->controller->id === 'feedback' ? 'active' : '' ?>">
-                                <i class="nav-icon fas fa-gift"></i>
+                                <i class="nav-icon fas fa-trophy"></i>
                                 <p>
-                                  Список победителей
+                                    Список победителей
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -145,6 +145,23 @@ $this->beginPage();
                                     <a href="<?= Yii::$app->urlManager->createUrl(['/feedback/create']) ?>" class="nav-link <?= Yii::$app->controller->id === 'feedback' && Yii::$app->controller->action->id === 'create' ? 'active' : '' ?>">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Добавить победителя</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item <?= Yii::$app->controller->id === 'mail' ? 'menu-open' : '' ?>">
+                            <a href="#" class="nav-link <?= Yii::$app->controller->id === 'mail' ? 'active' : '' ?>">
+                                <i class="nav-icon fas fa-envelope"></i>
+                                <p>
+                                    Настройки
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/mail/update']) ?>" class="nav-link <?= Yii::$app->controller->id === 'mail' && Yii::$app->controller->action->id === 'update' ? 'active' : '' ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> Изменить адрес </p>
                                     </a>
                                 </li>
                             </ul>

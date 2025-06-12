@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'value' => function ($model) {
                     if (!empty($model->image_filename)) {
-                        $url = 'http://localhost:8081/ajoApi/images/' . urlencode($model->image_filename);
+                        $url = 'https://limkorm-check-bot.demo.onlinebees.ru/ajo/images/' . urlencode($model->image_filename);
                         return '<img class="clickable-image" src="' . $url . '" data-full="' . $url . '" style="height: 50px; cursor: pointer;" alt="img">';
                     }
                     return '<span style="color:#5566c9;">нет изображения</span>';

@@ -10,7 +10,10 @@ use yii\widgets\ActiveForm;
 
 <div class="prize-inventory-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'action' => $model->isNewRecord ? ['prize-inventory/create'] : ['prize-inventory/update', 'id' => $model->id],
+        'options' => ['enctype' => 'multipart/form-data'],
+    ]); ?>
 
     <?= $form->field($model, 'id')->textInput(['maxlength' => true]) ?>
 
