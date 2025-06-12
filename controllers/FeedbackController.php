@@ -91,6 +91,26 @@ class FeedbackController extends Controller
         ]);
     }
 
+    public function actionUpdateProcessed()
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $id = \Yii::$app->request->post('id');
+        $isProcessed = \Yii::$app->request->post('is_processed');
+
+        $model = Feedback::findOne($id);
+        if (!$model) {
+            return ['success' => false, 'message' => 'Модель не найдена'];
+        }
+
+        $model->is_processed = $isProcessed;
+        if ($model->save(false, ['is_processed'])) {
+            return ['success' => true];
+        } else {
+            return ['success' => false, 'message' => 'Ошибка при сохранении'];
+        }
+    }
+
+
     /**
      * Updates an existing Feedback model.
      * If update is successful, the browser will be redirected to the 'view' page.
