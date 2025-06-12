@@ -26,13 +26,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             'prize',
             'created_at',
-            //'lottery_id',
+            [
+                'attribute' => 'is_processed',
+                'format' => 'boolean',
+                'label' => 'Обработано',
+            ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',
                 'urlCreator' => function ($action, Feedback $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                }
             ],
         ],
     ]); ?>

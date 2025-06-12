@@ -17,8 +17,8 @@ class FeedbackSearch extends Feedback
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name', 'tel', 'email', 'prize', 'lottery_id'], 'safe'],
+            [['is_processed'], 'boolean'],
+            [['prize'], 'safe'],
         ];
     }
 
@@ -47,11 +47,11 @@ class FeedbackSearch extends Feedback
             'query' => $query,
             'sort' => [
                 'defaultOrder' => [
-                    'created_at' => SORT_DESC // Сначала новые записи
+                    'created_at' => SORT_DESC
                 ]
             ],
             'pagination' => [
-                'pageSize' => 20 // Количество элементов на странице
+                'pageSize' => 20
             ]
         ]);
 
@@ -61,24 +61,13 @@ class FeedbackSearch extends Feedback
             return $dataProvider;
         }
 
-        // Фильтрация по точному совпадению
         $query->andFilterWhere([
-            'id' => $this->id,
-            'lottery_id' => $this->lottery_id,
+            'is_processed' => $this->is_processed,
         ]);
 
-        // Фильтрация по дате (если created_at передается)
-        if (!empty($this->created_at)) {
-            $query->andFilterWhere(['>=', 'created_at', date('Y-m-d 00:00:00', strtotime($this->created_at))])
-                ->andFilterWhere(['<=', 'created_at', date('Y-m-d 23:59:59', strtotime($this->created_at))]);
-        }
-
-        // Фильтрация по like для текстовых полей
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'tel', $this->tel])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'prize', $this->prize]);
+        $query->andFilterWhere(['like', 'prize', $this->prize]);
 
         return $dataProvider;
     }
+
 }

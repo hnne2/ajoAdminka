@@ -24,6 +24,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'prize')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'is_processed')->checkbox() ?>
+
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

@@ -3,7 +3,6 @@
 namespace app\models;
 
 use Yii;
-
 /**
  * This is the model class for table "feedback".
  *
@@ -14,7 +13,9 @@ use Yii;
  * @property string $prize
  * @property string $lottery_id
  * @property string $created_at
+ * @property int $is_processed
  */
+
 class Feedback extends \yii\db\ActiveRecord
 {
 
@@ -38,6 +39,8 @@ class Feedback extends \yii\db\ActiveRecord
             [['tel'], 'string', 'max' => 20],
             [['created_at'], 'safe'],
             [['lottery_id'], 'default', 'value' => 0],
+            [['is_processed'], 'boolean'],
+            [['is_processed'], 'default', 'value' => 0],
         ];
     }
 
@@ -54,6 +57,8 @@ class Feedback extends \yii\db\ActiveRecord
             'prize' => 'Приз',
             'lottery_id' => 'ID Розыгрыша',
             'created_at' => 'Дата создания',
+            'is_processed' => 'Обработано',
+
         ];
     }
     public function beforeSave($insert)

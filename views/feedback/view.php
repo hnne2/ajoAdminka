@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'prize',
             'lottery_id',
             'created_at',
+            'is_processed'
         ],
     ]) ?>
 

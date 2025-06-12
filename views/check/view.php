@@ -34,7 +34,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'moderation_comment:ntext',
             'uploaded_at',
             'processed_at',
-            'is_prize_sent',
             'image_filename',
         ],
     ]) ?>

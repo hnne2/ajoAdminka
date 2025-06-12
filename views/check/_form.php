@@ -25,10 +25,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'moderation_comment')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'is_prize_sent')->dropDownList([
-        0 => 'Нет',
-        1 => 'Да',
-    ]) ?>
     <?= $form->field($model, 'imageFile')->fileInput() ?>
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

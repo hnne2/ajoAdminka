@@ -52,18 +52,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'moderation_comment:text',
             'uploaded_at',
             [
-                'attribute' => 'is_prize_sent',
-                'format' => 'raw',
-                'value' => function ($model) {
-                    return $model->is_prize_sent ? 'Да' : 'Нет';
-                },
-                'filter' => [
-                    '' => 'Все',
-                    1 => 'Да',
-                    0 => 'Нет',
-                ],
-            ],
-            [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',
                 'urlCreator' => function ($action, Check $model) {

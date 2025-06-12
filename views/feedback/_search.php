@@ -15,17 +15,8 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'name') ?>
-
-    <?= $form->field($model, 'tel') ?>
-
-    <?= $form->field($model, 'email') ?>
-
     <?= $form->field($model, 'prize') ?>
-
-    <?php // echo $form->field($model, 'lottery_id') ?>
+    <?= $form->field($model, 'is_processed')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
