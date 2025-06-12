@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
-                'attribute' => 'status',
+                'attribute' => 'is_processed',
                 'format' => 'raw',
                 'value' => function ($model) {
                     $statuses = \app\models\Check::optsStatus();
