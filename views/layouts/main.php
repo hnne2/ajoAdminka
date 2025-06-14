@@ -164,6 +164,12 @@ $this->beginPage();
                                         <p> Изменить адрес </p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/mail/update']) ?>" class="nav-link <?= Yii::$app->controller->id === 'mail' && Yii::$app->controller->action->id === 'update' ? 'active' : '' ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> Обновить базу </p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
