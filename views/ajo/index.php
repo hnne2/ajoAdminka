@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Управление базой клиентов и номенований товаров';
+$this->title = 'Управление базой клиентов и номенклатурой товаров';
 ?>
 
 
