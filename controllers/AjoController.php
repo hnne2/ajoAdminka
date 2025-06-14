@@ -39,9 +39,9 @@ class AjoController extends Controller
     }
     public function actionDownload()
     {
-        $filePath = '/home/limkorm-check-bot/upload/AJO.xlex';
+        $filePath = '/home/limkorm-check-bot/upload/AJO.xlsx';
         if (file_exists($filePath)) {
-            return Yii::$app->response->sendFile($filePath, 'AJO.xlex');
+            return Yii::$app->response->sendFile($filePath, 'AJO.xlsx');
         }
 
         Yii::$app->session->setFlash('error', 'Файл не найден.');
