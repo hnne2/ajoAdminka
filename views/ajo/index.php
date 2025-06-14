@@ -14,7 +14,7 @@ $this->title = 'Управление файлом AJO.xlsx';
 <?php endif; ?>
 
 <?php
-$filePath = '/home/limkorm-check-bot/upload/AJO.xlex';
+$filePath = '/home/limkorm-check-bot/upload/AJO.xlsx';
 if (file_exists($filePath)) {
     echo "<p><strong>Файл:</strong> AJO.xlsx</p>";
     echo Html::a('📥 Скачать файл', ['ajo/download'], ['class' => 'btn btn-success']);

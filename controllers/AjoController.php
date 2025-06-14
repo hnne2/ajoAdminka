@@ -32,7 +32,7 @@ class AjoController extends Controller
                 Yii::$app->session->setFlash('error', 'Ошибка при сохранении файла.');
             }
         } else {
-            Yii::$app->session->setFlash('error', 'Пожалуйста, выберите файл с именем AJO.xlex.');
+            Yii::$app->session->setFlash('error', 'Пожалуйста, выберите файл с именем AJO.xlsx.');
         }
 
         return $this->redirect(['index']);
