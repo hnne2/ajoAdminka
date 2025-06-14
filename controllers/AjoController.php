@@ -21,22 +21,23 @@ class AjoController extends Controller
     public function actionUpload()
     {
         $uploadPath = '/home/limkorm-check-bot/upload/';
-        $fileName = 'AJO.xlsx';
+        $targetFileName = 'AJO.xlsx';
 
         $uploadedFile = UploadedFile::getInstanceByName('ajoFile');
-        if ($uploadedFile && $uploadedFile->name === $fileName) {
-            $fullPath = $uploadPath . $fileName;
+        if ($uploadedFile) {
+            $fullPath = $uploadPath . $targetFileName;
             if ($uploadedFile->saveAs($fullPath)) {
-                Yii::$app->session->setFlash('success', 'Файл успешно загружен и сохранён.');
+                Yii::$app->session->setFlash('success', 'Файл успешно загружен и сохранён как AJO.xlsx.');
             } else {
                 Yii::$app->session->setFlash('error', 'Ошибка при сохранении файла.');
             }
         } else {
-            Yii::$app->session->setFlash('error', 'Пожалуйста, выберите файл с именем AJO.xlsx.');
+            Yii::$app->session->setFlash('error', 'Файл не был загружен.');
         }
 
         return $this->redirect(['index']);
     }
+
     public function actionDownload()
     {
         $filePath = '/home/limkorm-check-bot/upload/AJO.xlsx';
