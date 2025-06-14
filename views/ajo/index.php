@@ -2,10 +2,9 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Управление файлом AJO.xlsx';
+$this->title = 'Управление базой клиентов и номенований товаров';
 ?>
 
-<h1><?= Html::encode($this->title) ?></h1>
 
 <?php if (Yii::$app->session->hasFlash('success')): ?>
     <div class="alert alert-success"><?= Yii::$app->session->getFlash('success') ?></div>
@@ -25,7 +24,7 @@ if (file_exists($filePath)) {
 
 <hr>
 
-<h3>Загрузить новый файл AJO.xlsx:</h3>
+<h3>Загрузить новую базу:</h3>
 <?php $form = ActiveForm::begin([
     'action' => ['upload'],
     'options' => ['enctype' => 'multipart/form-data']
