@@ -10,7 +10,7 @@ class AjoController extends Controller
 {
     public function actionIndex()
     {
-        $filePath = '/home/limkorm-check-bot/upload/AJO.xlex';
+        $filePath = '/home/limkorm-check-bot/upload/AJO.xlsx';
         $fileContent = file_exists($filePath) ? file_get_contents($filePath) : null;
 
         return $this->render('index', [
@@ -21,7 +21,7 @@ class AjoController extends Controller
     public function actionUpload()
     {
         $uploadPath = '/home/limkorm-check-bot/upload/';
-        $fileName = 'AJO.xlex';
+        $fileName = 'AJO.xlsx';
 
         $uploadedFile = UploadedFile::getInstanceByName('ajoFile');
         if ($uploadedFile && $uploadedFile->name === $fileName) {

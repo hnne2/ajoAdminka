@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Управление файлом AJO.xlex';
+$this->title = 'Управление файлом AJO.xlsx';
 ?>
 
     <h1><?= Html::encode($this->title) ?></h1>
