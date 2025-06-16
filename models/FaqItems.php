@@ -29,6 +29,7 @@ class FaqItems extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['title'], 'default', 'value' => 'Вопрос-ответ'],
             [['label', 'content'], 'required'],
             [['content'], 'string'],
             [['created_at'], 'safe'],
