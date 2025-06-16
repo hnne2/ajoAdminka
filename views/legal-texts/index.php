@@ -14,9 +14,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="legal-texts-index">
 
-    <p>
-        <?= Html::a('Create Legal Texts', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
 
     <?= GridView::widget([
@@ -24,18 +21,37 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'email',
-            'rules_content:ntext',
-            'politika_content:ntext',
-            'agreement_content:ntext',
+            [
+                'attribute' => 'rules_content',
+                'format' => 'html',
+                'value' => function($model) {
+                    return \yii\helpers\StringHelper::truncateWords(strip_tags($model->rules_content), 20);
+                }
+            ],
+            [
+                'attribute' => 'politika_content',
+                'format' => 'html',
+                'value' => function($model) {
+                    return \yii\helpers\StringHelper::truncateWords(strip_tags($model->politika_content), 20);
+                }
+            ],
+            [
+                'attribute' => 'agreement_content',
+                'format' => 'html',
+                'value' => function($model) {
+                    return \yii\helpers\StringHelper::truncateWords(strip_tags($model->agreement_content), 20);
+                }
+            ],
             'created_at',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, LegalTexts $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                }
             ],
         ],
     ]); ?>
+
 
 
 </div>
