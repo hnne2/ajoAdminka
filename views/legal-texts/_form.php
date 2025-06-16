@@ -11,7 +11,10 @@ use dosamigos\tinymce\TinyMce;
 
 <div class="legal-texts-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'action' => $model->isNewRecord ? ['legal-texts/create'] : ['legal-texts/update', 'id' => $model->id],
+        'options' => ['enctype' => 'multipart/form-data'],
+    ]); ?>
 
     <?= $form->field($model, 'rules_content')->widget(TinyMce::class, [
         'options' => ['rows' => 10],
