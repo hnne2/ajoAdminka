@@ -55,7 +55,6 @@ use dosamigos\tinymce\TinyMce;
         ]
     ]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput(['readonly' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
