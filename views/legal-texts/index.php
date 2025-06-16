@@ -44,7 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'created_at',
             [
-                'class' => ActionColumn::className(),
+                'class' => ActionColumn::class,
+                'template' => '{update} {delete}',
                 'urlCreator' => function ($action, LegalTexts $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                 }
