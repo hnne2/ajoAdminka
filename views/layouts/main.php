@@ -170,6 +170,18 @@ $this->beginPage();
                                         <p> Обновить базу </p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/faq-items/index']) ?>" class="nav-link <?= Yii::$app->controller->id === 'faq-items' && Yii::$app->controller->action->id === 'index' ? 'active' : '' ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> Вопрос-Ответ</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['/legal-texts/index']) ?>" class="nav-link <?= Yii::$app->controller->id === 'legal-texts' && Yii::$app->controller->action->id === 'index' ? 'active' : '' ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> Правила акции </p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
