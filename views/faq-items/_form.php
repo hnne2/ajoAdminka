@@ -17,8 +17,6 @@ use dosamigos\tinymce\TinyMce;
     ]); ?>
 
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'label')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'content')->widget(TinyMce::class, [
