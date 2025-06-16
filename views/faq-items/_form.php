@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use dosamigos\tinymce\TinyMce; // подключаем виджет TinyMCE
+use dosamigos\tinymce\TinyMce;
 
 /** @var yii\web\View $this */
 /** @var app\models\FaqItems $model */
@@ -11,7 +11,11 @@ use dosamigos\tinymce\TinyMce; // подключаем виджет TinyMCE
 
 <div class="faq-items-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'action' => $model->isNewRecord ? ['faq-items/create'] : ['faq-items/update', 'id' => $model->id],
+        'options' => ['enctype' => 'multipart/form-data'],
+    ]); ?>
+
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
@@ -29,8 +33,6 @@ use dosamigos\tinymce\TinyMce; // подключаем виджет TinyMCE
             'toolbar' => "undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help"
         ]
     ]) ?>
-
-    <?= $form->field($model, 'created_at')->textInput(['readonly' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

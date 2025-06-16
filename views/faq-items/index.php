@@ -14,7 +14,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="faq-items-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Create Faq Items', ['create'], ['class' => 'btn btn-success']) ?>
@@ -30,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'label',
             'content:ntext',
-            'created_at',
+            //'created_at',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, FaqItems $model, $key, $index, $column) {

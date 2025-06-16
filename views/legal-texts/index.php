@@ -14,8 +14,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="legal-texts-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a('Create Legal Texts', ['create'], ['class' => 'btn btn-success']) ?>
     </p>

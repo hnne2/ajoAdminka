@@ -15,8 +15,6 @@ use Yii;
  */
 class FaqItems extends \yii\db\ActiveRecord
 {
-
-
     /**
      * {@inheritdoc}
      */
@@ -31,7 +29,7 @@ class FaqItems extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'default', 'value' => 'Ð’Ð¾Ð¿Ñ€Ð¾Ñ-Ð¾Ñ‚Ð²ÐµÑ‚'],
+            [['title'], 'default', 'value' => 'Вопрос-ответ'],
             [['label', 'content'], 'required'],
             [['content'], 'string'],
             [['created_at'], 'safe'],
@@ -53,4 +51,17 @@ class FaqItems extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * Автоматическая установка created_at перед сохранением новой записи
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if ($insert) {
+                $this->created_at = date('Y-m-d H:i:s');
+            }
+            return true;
+        }
+        return false;
+    }
 }
