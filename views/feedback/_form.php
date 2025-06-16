@@ -26,7 +26,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'is_processed')->checkbox() ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
 
 

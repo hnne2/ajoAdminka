@@ -54,6 +54,7 @@ use dosamigos\tinymce\TinyMce;
             'toolbar' => "undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help"
         ]
     ]) ?>
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
 
     <div class="form-group">
