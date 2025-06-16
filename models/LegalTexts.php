@@ -11,6 +11,7 @@ use Yii;
  * @property string $rules_content
  * @property string $politika_content
  * @property string $agreement_content
+ * @property string $email
  * @property string $created_at
  */
 class LegalTexts extends \yii\db\ActiveRecord
@@ -33,6 +34,7 @@ class LegalTexts extends \yii\db\ActiveRecord
         return [
             [['rules_content', 'politika_content', 'agreement_content'], 'required'],
             [['rules_content', 'politika_content', 'agreement_content'], 'string'],
+            ['email', 'email'],
             [['created_at'], 'safe'],
         ];
     }
@@ -47,6 +49,7 @@ class LegalTexts extends \yii\db\ActiveRecord
             'rules_content' => 'Rules Content',
             'politika_content' => 'Politika Content',
             'agreement_content' => 'Agreement Content',
+            'email' => 'Email',
             'created_at' => 'Created At',
         ];
     }
